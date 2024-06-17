@@ -1,0 +1,42 @@
+:host {
+  li-card {
+    --card-min-height: auto;
+    --card-height: auto;
+    
+    li-header {
+      --header-border-style: none;
+      --header-align-items: center;
+      --header-padding: 10px;
+    }
+
+    li-content {
+      ul {
+        display: grid;
+        list-style: none;
+        padding: 20px;
+        row-gap: 10px;
+        margin: 0;
+
+        li {
+          display: grid;
+          grid-template-columns: var(
+            --ps-mydeal-item-colums, 
+            10% 50% 20% 20%
+          );
+          border: var(--ps-mydeal-item-border);
+
+          &:not(:last-child) {
+            border-bottom: var(
+              --ps-mydeal-item-border-bottom,
+              1px solid var(--ps-border-color)
+            );
+            padding-bottom: var(
+              --ps-mydeal-item-padding-bottom, 
+              10px
+            );
+          }
+        }
+      }
+    }
+  }
+}

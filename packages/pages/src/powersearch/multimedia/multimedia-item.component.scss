@@ -1,0 +1,22 @@
+:host {
+  section {
+    display: grid;
+    grid-template-rows: 1fr 30px;
+    height: 200px;
+    width: 300px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 10px;
+    row-gap: 10px;
+    
+    div:first-child {
+      border: 1px solid;
+      border-radius: 10px;
+    }
+
+    div:last-child {
+      display: grid;
+      grid-template-columns: 1fr 10px 10px;
+    }
+  }
+}

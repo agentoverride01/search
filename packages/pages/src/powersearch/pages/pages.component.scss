@@ -1,0 +1,24 @@
+:host {
+  li-card {
+    --card-border: 1px solid;
+    --card-min-height: auto;
+    --card-height: auto;
+
+    li-header {
+      --header-border-style: none;
+      --header-align-items: center;
+      --header-padding: 10px;
+    }
+
+    li-content {
+      .ps-pages-content {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-items: center;
+        align-items: center;
+        padding: 20px;
+        row-gap: 30px;
+        column-gap: 30px;
+      }
+    }
+  }
+}

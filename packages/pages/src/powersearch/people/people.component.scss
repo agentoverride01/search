@@ -1,0 +1,12 @@
+:host {
+  li-card {
+    --card-height: 200px;
+    --card-min-height: 200px;
+    
+    li-header {
+      --header-border-style: none;
+      --header-align-items: center;
+      --header-padding: 10px;
+    }
+  }
+}

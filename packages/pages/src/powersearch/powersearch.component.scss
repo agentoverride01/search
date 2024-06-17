@@ -1,0 +1,54 @@
+:host {
+  --card-border: 1px solid;
+  --card-box-shadow: 0 1px 5px 1px #dce7f6;
+  --card-border-color: #cccccc;
+
+  --footer-border-style: none;
+
+  li-layout {
+    --layour-row-gap: 10px;
+
+    li-header {
+      --header-border-style: none;
+      --header-height: auto;
+      
+      ul {
+        display: flex;
+        column-gap: 10px;
+        list-style: none;
+        padding: 0;
+
+        li {
+          width: fit-content;
+          border: 1px solid;
+          border-radius: 8px;
+          padding: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    li-content {
+      --content-padding: 0;
+      --content-section-display: grid;
+
+      > section {
+        grid-template-columns: var(--ps-section-columns, 60% auto);
+        column-gap: 30px;
+        transition: var(--ps-section-transition, 1000ms);
+
+        section:first-child {
+          display: flex;
+          flex-direction: column;
+          row-gap: 30px;
+        }
+
+        section:last-child {
+          display: flex;
+          flex-direction: column;
+          row-gap: 30px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+:host {
+  .ps--page-item {
+    display: grid;
+    row-gap: 10px;
+    border: 1px solid #cccccc; 
+    height: 120px;
+    border-radius: 8px;
+    padding: 10px 20px;
+
+    > div:first-child {
+      border-bottom: 1px solid #cccccc;
+
+      > div {
+        display: grid;
+        row-gap: 10px;
+      }
+    }
+
+    > div:last-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

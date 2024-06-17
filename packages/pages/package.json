@@ -1,0 +1,13 @@
+{
+  "name": "@lithium/pages",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": ""
+  },
+  "keywords": [],
+  "author": "Arjay Elbore <aelbore.sg@gmail.com>",
+  "license": "MIT"
+}

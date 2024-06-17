@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "@lithium/tsconfig/tsconfig.json",
+    "@lithium/tsconfig/tsconfig.paths.json"
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

@@ -1,0 +1,44 @@
+:root {
+  --font-family: 'Calibri';
+  --border-radius: 8px;
+  --text-color: #000;
+
+  --primary-white: #fff;
+
+  --button-border-radius: var(--border-radius);
+  --button-text-color: var(--primary-white);
+  --button-bg-color: #1991F0;
+  --button-border: none;
+  --button-border-color: transparent;
+  --button-font-weight: 400;
+  --button-font-size: 16px;
+  --button-width: 100%;
+  --button-height: 40px;
+  --button-cursor: pointer;
+  --button-text-align: center;
+
+  --card-display: grid;
+  --card-border-radius: var(--border-radius);
+  --card-bg-color: var(--primary-white);
+  --card-border-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --card-width: 100%;
+  --card-min-height: 50vh;
+  --card-height: 50vh;
+  --card-padding: 0;
+  --card-display: grid;
+  --card-grid-rows: auto 1fr auto;
+
+  --header-display: grid;
+  --header-height: 48px;
+  --header-border-style: none none solid none;
+
+  --content-padding: 10px;
+  --content-display: grid;
+  --content-section-display: grid;
+
+  --footer-display: grid;
+  --footer-height: 48px;
+  --footer-border-style: solid none none none;
+
+  --ps-border-color: #ededed;
+}

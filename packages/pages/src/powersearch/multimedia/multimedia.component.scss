@@ -1,0 +1,46 @@
+:host {
+  li-card {
+    --card-border: 1px solid;
+    --card-min-height: auto;
+    --card-height: auto;
+
+    li-header {
+      --header-border-style: none;
+      --header-align-items: center;
+      --header-padding: 10px;
+    }
+
+    li-content {
+      .ps-multimedia-content {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-items: center;
+        align-items: center;
+        padding: 20px;
+        row-gap: 30px;
+        column-gap: 30px;
+
+        section {
+          display: grid;
+          grid-template-rows: 1fr 30px;
+          height: 200px;
+          width: 300px;
+          border: 1px solid #cccccc;
+          border-radius: 8px;
+          padding: 10px;
+          row-gap: 10px;
+          
+          div:first-child {
+            border: 1px solid;
+            border-radius: 10px;
+          }
+
+          div:last-child {
+            display: grid;
+            grid-template-columns: 1fr 10px 10px;
+          }
+
+        }
+      }
+    }
+  }
+}
