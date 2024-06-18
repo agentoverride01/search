@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 @Component({
   selector: 'ps-mydeal',
@@ -60,9 +60,4 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
   `,
   styleUrl: './mydeal.component.scss'
 })
-export class PowerSearchMyDealComponent { 
-
-  @Input() active!: string
-
-
-}
+export class PowerSearchMyDealComponent { }

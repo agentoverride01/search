@@ -15,6 +15,9 @@ import { PowerSearchPageItemComponent } from './page-item.component'
           <ps-page-item></ps-page-item>
           <ps-page-item></ps-page-item>
           <ps-page-item></ps-page-item>
+          <ps-page-item></ps-page-item>
+          <ps-page-item></ps-page-item>
+          <ps-page-item></ps-page-item>
         </section>
       </li-content>
       <li-footer></li-footer>

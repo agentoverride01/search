@@ -1,12 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core'
 
 import { PowerSearchDocumentsComponent } from './documents/documents.component'
 import { PowerSearchPeopleComponent } from './people/people.component'
 import { PowerSearchMyDealComponent } from './mydeal/mydeal.component'
 import { PowerSearchPagesComponent } from './pages/pages.component'
 import { PowerSearchMultimediaComponent } from './multimedia/multimedia.component'
-
-import { ZoomInOutService } from './services/zoom-in-out'
 
 @Component({
   selector: 'gl-powersearch',
@@ -22,7 +20,7 @@ import { ZoomInOutService } from './services/zoom-in-out'
         </ul>        
       </li-header>
       <li-content>
-        <section>
+        <section #psContent class="row">
           <section>
             <ps-documents></ps-documents>
             <ps-pages></ps-pages>
@@ -32,6 +30,17 @@ import { ZoomInOutService } from './services/zoom-in-out'
             <ps-mydeal></ps-mydeal>
             <ps-multimedia></ps-multimedia>
           </section>
+
+          <!-- <div class="column-60 column-gap">
+            <ps-documents></ps-documents>
+            <ps-pages></ps-pages>
+          </div>
+          <div class="column column-gap">
+            <ps-people></ps-people>
+            <ps-mydeal></ps-mydeal>
+            <ps-multimedia></ps-multimedia>
+          </div> -->
+          
         </section>
       </li-content>
     </li-layout>
@@ -44,15 +53,16 @@ import { ZoomInOutService } from './services/zoom-in-out'
     PowerSearchMyDealComponent,
     PowerSearchPagesComponent,
     PowerSearchMultimediaComponent
-  ],
-  providers: [ ZoomInOutService ]
+  ]
 })
-export class PowersearchComponent { 
-  #zoomInOut = inject(ZoomInOutService)
-
+export class PowersearchComponent {  
   tabs = [ 'Documents', 'People', 'Pages', 'Multimedia', 'News' ]
 
+  @ViewChild('psContent') psContent!: ElementRef
+
   onZoomInOunt(name: string) {
-    this.#zoomInOut.zoomOut(name.toLowerCase())
+    this.psContent.nativeElement.classList.toggle(
+      name.toLowerCase()
+    )
   }
 }

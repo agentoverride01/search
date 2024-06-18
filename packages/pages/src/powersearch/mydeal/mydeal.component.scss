@@ -24,6 +24,8 @@
             10% 50% 20% 20%
           );
           border: var(--ps-mydeal-item-border);
+          padding: var(--ps-mydeal-item-padding);
+          height: var(--ps-mydeal-item-height);
 
           &:not(:last-child) {
             border-bottom: var(

@@ -1,13 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core'
-
-import { ZoomInOutService } from '../services/zoom-in-out'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core'
 
 @Component({
   selector: 'ps-documents',
   standalone: true,
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   template: `
-    <li-card (click)="onZoomOut()">
+    <div #overlay class="overlay"></div>
+    <li-card #card (click)="onZoomOut()">
       <li-header>Documents</li-header>
       <li-content>
         <header>
@@ -81,11 +80,11 @@ import { ZoomInOutService } from '../services/zoom-in-out'
   styleUrl: './documents.component.scss'
 })
 export class PowerSearchDocumentsComponent { 
-  #zoomInOut = inject(ZoomInOutService)
+  @ViewChild('card') cardRef!: ElementRef
+  @ViewChild('overlay') overlayRef!: ElementRef
 
   onZoomOut() {
-    this.#zoomInOut.toogle 
-      ? this.#zoomInOut.zoomIn()
-      : this.#zoomInOut.zoomOut('documents')
+    this.overlayRef.nativeElement.classList.toggle('active')
+    this.cardRef.nativeElement.classList.toggle('zoom-in-out')
   }
 }
