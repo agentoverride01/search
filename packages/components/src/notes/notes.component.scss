@@ -1,0 +1,45 @@
+:host {
+  font-family: var(--font-family);
+
+  .notes {
+    display: grid;
+    grid-template-columns: 95% 5%; 
+    background-color: var(--notes-bg-color);
+    padding: 20px;   
+    border-left: 6px solid var(--notes-border-left-color);
+
+    &--content {
+      color: #000;
+    }
+
+    &--button {
+      background-color: transparent;
+      font-size: 35px;
+      border: none;
+      color: #000;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+  }
+}
+
+:host([type=success]) {
+  --notes-bg-color:  #ddffdd;
+  --notes-border-left-color: #04AA6D;
+}
+
+:host([type=info]) {
+  --notes-bg-color: #e7f3fe;
+  --notes-border-left-color:#2196F3;
+}
+
+:host([type=warning]) {
+  --notes-bg-color:  #ffffcc;
+  --notes-border-left-color: #ffeb3b;
+}
+
+:host([type=danger]) {
+  --notes-bg-color:  #ffdddd;
+  --notes-border-left-color: #f44336;
+}

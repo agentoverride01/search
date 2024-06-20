@@ -1,4 +1,6 @@
 :host {
+  --ps-focus-min-height: 80vh;
+
   --card-border: 1px solid;
   --card-box-shadow: 0 1px 5px 1px #dce7f6;
   --card-border-color: #cccccc;
@@ -12,18 +14,31 @@
       --header-border-style: none;
       --header-height: auto;
       
+      div:last-child {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
       ul {
-        display: flex;
-        column-gap: 10px;
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));     
+        column-gap: 20px;
         list-style: none;
         padding: 0;
 
         li {
-          width: fit-content;
+          width: 100%;
           border: 1px solid;
           border-radius: 8px;
           padding: 5px;
           cursor: pointer;
+          text-align: center;
+
+          &.active,
+          &:hover {
+            background-color: #2196F3;
+            color: #fff;
+          } 
         }
       }
     }
@@ -34,16 +49,18 @@
       > section {
         display: grid;
         grid-template-columns: var(--ps-section-columns, 60% auto);
-        transition: var(--ps-section-transition, 500ms);
+        transition: 500ms;
         column-gap: 30px;
 
-        section:first-child {
-          display: flex;
-          flex-direction: column;
-          row-gap: 30px;
+        ps-documents,
+        ps-people,
+        ps-mydeal,
+        ps-pages,
+        ps-multimedia {
+          transition: opacity 0.5s ease-in-out;
         }
 
-        section:last-child {
+        > section {
           display: flex;
           flex-direction: column;
           row-gap: 30px;
@@ -51,40 +68,131 @@
       }
     }
   }
+}
 
-  .documents {
-    --ps-section-columns: 80% auto;
+:host([active=people]), 
+:host([active=deal]), 
+:host([active=multimedia]) {
+  .ps-content {
+    --ps-section-columns: 0% 95%;
+  }
+}
 
-    ps-mydeal {
-      --ps-mydeal-item-colums: 1fr;
-      --ps-mydeal-item-border: 1px solid var(--ps-border-color);
-      --ps-mydeal-item-padding: 10px;
-      --ps-mydeal-item-height: 100px;
+:host([active=pages]),
+:host([active=documents]) {
+  --ps-section-columns: 100% 0%;
+}
+
+:host([active=documents]) {
+  .ps-content {
+    --ps-documents-min-height: var(--ps-focus-min-height);
+
+    section:last-child {
+      display: none !important;
+    }
+
+    ps-people,
+    ps-mydeal,
+    ps-multimedia,
+    ps-pages {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    ps-pages {
+      display: none;
+    }
+  }  
+}
+
+:host([active=pages]) {
+  .ps-content {
+    --ps-pages-min-height: var(--ps-focus-min-height);
+    
+    ps-documents,
+    ps-mydeal,
+    ps-people,
+    ps-multimedia {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    ps-documents {
+      display: none;
+    }
+
+    section:first-child {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 0% 100%;
+    }
+
+    section:last-child {
+      display: none !important;
     }
   }
+}
 
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
+:host([active=people]) {
+  .ps-content {
+    --ps-people-min-height: var(--ps-focus-height);
 
-  .column-60 {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 3;
-  }
+    ps-documents,
+    ps-mydeal,
+    ps-multimedia,
+    ps-pages {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-  .column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-  }
+    ps-pages {
+      display: none;
+    }
+  }  
+}
 
-  .column-gap {
-    row-gap: 30px;
+:host([active=deal]) {
+  .ps-content {
+    --ps-mydeal-min-height: var(--ps-focus-min-height);
+
+    ps-documents,
+    ps-people,
+    ps-multimedia,
+    ps-pages {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    ps-pages {
+      display: none !important;
+    }
+
+    section:last-child {
+      display: grid !important;
+      grid-template-columns: 0% 100% 0% !important;
+    }
+  }  
+}
+
+:host([active=multimedia]) {
+  .ps-content {
+    --ps-multimedia-min-height: var(--ps-focus-min-height);
+
+    ps-documents,
+    ps-mydeal,
+    ps-people,
+    ps-pages {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    section:last-child {
+      display: grid !important;
+      grid-template-columns: 0% 0% 100% !important;
+    }
+
+    ps-pages {
+      display: none;
+    }
   }
 }

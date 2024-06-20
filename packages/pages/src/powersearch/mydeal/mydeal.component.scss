@@ -1,7 +1,11 @@
 :host {
   li-card {
-    --card-min-height: auto;
-    --card-height: auto;
+    --card-min-height: var(--ps-mydeal-height, auto);
+    --card-height: var(
+      --ps-mydeal-height, 
+      var(--ps-mydeal-min-height, auto)
+    );
+
     
     li-header {
       --header-border-style: none;

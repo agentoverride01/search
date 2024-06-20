@@ -1,12 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 @Component({
   selector: 'ps-people',
   standalone: true,
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   template: `
-    <div #overlay class="overlay"></div>
-    <li-card #card (click)="onZoomOut()">
+    <li-card class="ps-people--card">
       <li-header>People</li-header>
       <li-content>
         <section>
@@ -17,13 +16,4 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angul
   `,
   styleUrl: './people.component.scss'
 })
-export class PowerSearchPeopleComponent { 
-  @ViewChild('card') cardRef!: ElementRef
-  @ViewChild('overlay') overlayRef!: ElementRef
-
-  onZoomOut() {
-    this.overlayRef.nativeElement.classList.toggle('active')
-    this.cardRef.nativeElement.classList.toggle('zoom-in-out')
-  }
-
-}
+export class PowerSearchPeopleComponent { }

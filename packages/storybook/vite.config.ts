@@ -14,7 +14,11 @@ const createFilter = () => {
   const criteria = (path: string) => join(__dirname, path)
 
   const include = criteria('../elements')
-  const exclude = [ './stories/**/*.ts', '../pages/**/*.ts'  ] as string[]
+  const exclude = [ 
+    './stories/**/*.ts', 
+    '../pages/**/*.ts',
+    '../components/**/*.ts'
+  ]
   
   return {
     tsFilter: (id) => {

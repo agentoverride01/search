@@ -1,8 +1,10 @@
 :host {
   li-card {
-    --card-border: 1px solid;
-    --card-min-height: auto;
-    --card-height: auto;
+    --card-min-height: var(--ps-multimedia-min-height, auto);
+    --card-height: var(
+      --ps-pages-height, 
+      var(--ps-multimedia-min-height, auto)
+    );
 
     li-header {
       --header-border-style: none;
@@ -38,7 +40,6 @@
             display: grid;
             grid-template-columns: 1fr 10px 10px;
           }
-
         }
       }
     }

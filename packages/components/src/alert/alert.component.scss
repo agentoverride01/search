@@ -1,0 +1,48 @@
+:host {
+  font-family: var(--font-family);
+
+  .alert {
+    display: grid;
+    grid-template-columns: 95% 5%; 
+    background-color: var(--alert-bg-color);
+    padding: 20px;   
+
+    &--content {
+      color: #fff;
+    }
+
+    &--button {
+      background-color: transparent;
+      font-size: 35px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      align-self: flex-start;
+    }
+  }
+}
+
+:host([type=success]) {
+  .alert  {
+    --alert-bg-color: #04AA6D;
+  }
+}
+
+:host([type=info]) {
+  .alert  {
+    --alert-bg-color: #2196F3;
+  }
+}
+
+:host([type=warning]) {
+  .alert  {
+    --alert-bg-color: #ff9800;
+  }
+}
+
+:host([type=danger]) {
+  .alert  {
+    --alert-bg-color: #f44336;
+  }
+}

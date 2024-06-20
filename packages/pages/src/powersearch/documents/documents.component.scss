@@ -1,8 +1,10 @@
 :host {
   li-card {
-    --card-min-height: auto;
-    --card-height: auto;
-    --card-transition: transform 0.3s ease-in-out;
+    --card-min-height: var(--ps-documents-min-height, auto);
+    --card-height: var(
+      --ps-documents-height, 
+      var(--ps-documents-min-height, auto)
+    );
   
     ul {
       list-style: none;
@@ -55,26 +57,5 @@
         }
       }
     }
-  }
-
-  .zoom-in-out {
-    --card-transform: translate(40%, 0%) scale(1.2);
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: var(--ps-people-opacity);
-    visibility: var(--ps-people-visibility, hidden);
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .overlay.active {
-    --ps-people-opacity: 1;
-    --ps-people-visibility: visible;
   }
 }

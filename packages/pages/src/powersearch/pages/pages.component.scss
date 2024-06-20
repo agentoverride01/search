@@ -1,8 +1,10 @@
 :host {
   li-card {
-    --card-border: 1px solid;
-    --card-min-height: auto;
-    --card-height: auto;
+    --card-min-height: var(--ps-pages-min-height, auto);
+    --card-height: var(
+      --ps-pages-height, 
+      var(--ps-pages-min-height, auto)
+    );
 
     li-header {
       --header-border-style: none;
