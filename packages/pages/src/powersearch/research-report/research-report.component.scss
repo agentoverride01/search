@@ -1,17 +1,16 @@
 :host {
+
   li-card {
-    --card-min-height: var(--ps-mydeal-height, auto);
+    --card-min-height: var(--ps-research-report-height, auto);
     --card-height: var(
-      --ps-mydeal-height, 
-      var(--ps-mydeal-min-height, auto)
+      --ps-research-report-height, 
+      var(--ps-research-report-min-height, auto)
     );
 
-    
     li-header {
       --header-border-style: none;
       --header-align-items: center;
       --header-padding: 10px;
-      --header-columns: 1fr 1fr;
     }
 
     li-content {
@@ -25,29 +24,27 @@
         li {
           display: grid;
           grid-template-columns: var(
-            --ps-mydeal-item-colums, 
-            10% 50% 20% 20%
+            --ps-research-report-item-colums, 
+            30% 50% auto 
           );
-          border: var(--ps-mydeal-item-border);
-          padding: var(--ps-mydeal-item-padding);
-          height: var(--ps-mydeal-item-height);
+          border: var(--ps-research-report-item-border);
+          padding: var(--ps-research-report-item-padding);
+          height: var(--ps-research-report-item-height);
 
           &:not(:last-child) {
             border-bottom: var(
-              --ps-mydeal-item-border-bottom,
+              --ps-research-report-border-bottom,
               1px solid var(--ps-border-color)
             );
             padding-bottom: var(
-              --ps-mydeal-item-padding-bottom, 
+              --ps-research-report-padding-bottom, 
               10px
             );
           }
 
-          legend-dot {
-            --legend-dot-display: grid;
-          }
         }
       }
     }
+    
   }
 }

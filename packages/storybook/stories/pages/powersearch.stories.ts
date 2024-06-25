@@ -1,12 +1,19 @@
-import type { StoryObj, Meta } from '@storybook/angular'
+import '@lithium/elements/layout'
+import '@lithium/elements/card'
+import '@lithium/elements/avatar'
+
+/* eslint quotes: "off" */
+import { type StoryObj, type Meta } from "@storybook/angular"
 import { defineDefaultArgs } from '@lithium/storybook/utils'
 
 import { SearchInputComponent } from '@lithium/components/search-input'
-import { AlertComponent  } from  '@lithium/components/alert'
-import { NotesComponent  } from '@lithium/components/notes'
+import { PowersearchComponent, PowerSearchMyDealComponent } from '@lithium/pages/powersearch'
 
-import { PowerSearch } from './powersearch'
-import { PowerSearchModal} from './powersearch-modal'
+import { PowerSearchAlert } from './powersearch/powersearch-alert'
+import { PowerSearchNotes } from './powersearch/powersearch-notes'
+import { PowerSearch } from './powersearch/powersearch'
+import { PowerSearchModal } from './powersearch/powersearch-modal'
+import { HomePage as PowerSearchHomePage } from './powersearch/powersearch-home'
 
 export type Args = { 
   theme?: string
@@ -20,23 +27,40 @@ export default {
     moduleMetadataOptions: {
       imports: [ 
         SearchInputComponent, 
-        AlertComponent, 
-        NotesComponent, 
-        PowerSearchModal 
+        PowerSearchAlert, 
+        PowerSearchNotes, 
+        PowerSearchModal,
+        PowerSearchHomePage,
+        PowersearchComponent,
+        PowerSearchMyDealComponent
       ]
     }
   })
 } as Meta
 
-export const Page: StoryObj = {
-  args: {}
+export const FirstTimeUser: StoryObj = {
+  render: () => ({
+    template: `
+      <powersearch-modal></powersearch-modal>
+    `
+  })
 }
 
-export const Search: StoryObj = {
+export const SearchPage: StoryObj = {
   render: () => ({
     template: /* html */`
-      <search-input></search-input>
-    `
+      <article>
+        <search-input></search-input>
+        <gl-powersearch></gl-powersearch>
+      </article>
+    `,
+    styles: [ /* scss */ `
+      article {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        row-gap: 20px;
+      }
+    `]
   })
 }
 
@@ -55,28 +79,15 @@ export const Alert: StoryObj = {
   },
   render: (args: Args) => ({
     template: /* html */`
-      <article>
-        <search-input></search-input>
-        <alert type="${args.type ?? 'info'}">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book. It has survived not only five centuries, 
-          but also the leap into electronic typesetting, 
-          remaining essentially unchanged
-        </alert>
-      </article>
-    `,
-    styles: [ /* scss */`
-      article  {
-        display: grid;
-        row-gap: 20px;
-      }
-    `]
+      <powersearch-alert type=${args.type}></powersearch-alert>
+    `
   })
 }
 
 export const Notes: StoryObj = {
+  args: {
+    type: 'info'
+  },
   argTypes: {
     type: { 
       options: [ 'info', 'success', 'warning', 'danger' ],
@@ -88,31 +99,20 @@ export const Notes: StoryObj = {
   },
   render: (args: Args) => ({
     template: /* html */`
-      <article>
-        <search-input></search-input>
-        <notes type="${args.type ?? 'info'}">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book. It has survived not only five centuries, 
-          but also the leap into electronic typesetting, 
-          remaining essentially unchanged
-        </notes>
-      </article>
-    `,
-    styles: [ /* scss */`
-      article  {
-        display: grid;
-        row-gap: 20px;
-      }
-    `]
+       <powersearch-notes type=${args.type}></powersearch-notes>
+    `
   })
 }
 
-export const Modal: StoryObj = {
+export const MyDeal: StoryObj = {
   render: () => ({
-    template: /* html */`
-      <powersearch-modal></powersearch-modal>
-    `
+    template: `
+      <ps-mydeal></ps-mydeal>
+    `,
+    styles: [ /* scss */`
+      :host {
+        --card-padding: 20px;
+      }
+    `]
   })
 }

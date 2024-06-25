@@ -6,7 +6,7 @@ export class ContentElement extends CustomElement {
   #scrollable!: boolean
   #noScrollbar!: boolean
 
-  static elementName = 'li-content'
+  static $name = 'li-content'
 
   get scrollable() {
     return this.#scrollable
@@ -35,6 +35,6 @@ export class ContentElement extends CustomElement {
   }
 }
 
-if (!customElements.get(ContentElement.elementName)) {
-  customElements.define(ContentElement.elementName, ContentElement)
+if (!customElements.get(ContentElement.$name)) {
+  customElements.define(ContentElement.$name, ContentElement)
 }

@@ -1,10 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core'
-
-export type AlertType =  
-  'success' 
-  | 'info'
-  | 'warning'
-  | 'danger'
+import { AlertType } from './types'
 
 @Component({
   selector: 'alert',

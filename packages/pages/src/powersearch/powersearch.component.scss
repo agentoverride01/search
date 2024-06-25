@@ -135,6 +135,14 @@
 
 :host([active=people]) {
   .ps-content {
+    --ps-people-item-display: flex;
+    --ps-people-item-flex-direction: row-reverse;
+    --ps-people-item-gap: 20px;
+    --ps-people-item-align-items: center;
+    --ps-people-item-rows: 1fr;
+    --ps-people-item-columns: 1fr auto;
+    --ps-people-position-display: grid;
+    --ps-people-content-display: flex;
     --ps-people-min-height: var(--ps-focus-height);
 
     ps-documents,

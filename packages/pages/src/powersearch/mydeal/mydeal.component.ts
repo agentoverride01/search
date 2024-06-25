@@ -1,4 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { MydealLegend, MyDealValue } from '@lithium/pages/types'
+
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core'
+
+import { MyDealLegendComponent } from './mydeal-legend.component'
+import { MyDealLegendDotComponent } from './mydeal-legend-dot.component'
+import { MyDealService } from './mydeal.service'
 
 @Component({
   selector: 'ps-mydeal',
@@ -6,58 +12,37 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   template: `
     <li-card>
-      <li-header>myDeal</li-header>
+      <li-header>
+        <div>myDeal</div>
+        <mydeal-legend [value]="legends()"></mydeal-legend>
+      </li-header>
       <li-content>
         <section>
           <ul>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li> 
-            <li>
-              <div></div>
-              <div>Coca Cola</div>
-              <div>US$ 1.28</div>
-              <div>09-Aug-2022</div>
-            </li>               
+            @for(deal of deals(); track deal.dealDbId) {
+              <li>
+                <legend-dot></legend-dot>
+                <div>{{deal.clientName}}</div>
+                <div>
+                  USD$ {{ deal.dealSize }}
+                </div>
+                <div>{{deal.pricingDate}}</div>
+              </li>
+            }           
           </ul>
         </section>
       </li-content>
       <li-footer></li-footer>
     </li-card>    
   `,
-  styleUrl: './mydeal.component.scss'
+  styleUrl: './mydeal.component.scss',
+  imports: [ MyDealLegendComponent, MyDealLegendDotComponent ],
+  providers: [ MyDealService ]
 })
-export class PowerSearchMyDealComponent { }
+export class PowerSearchMyDealComponent { 
+  #state = inject(MyDealService)
+
+  deals = this.#state.select<MyDealValue[]>('deals')
+
+  legends = this.#state.select<MydealLegend[]>('legends')
+}

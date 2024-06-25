@@ -71,6 +71,9 @@ export default defineConfig({
       inlineStylesExtension: 'scss',
       transformFilter(_, id) {
         const { tsFilter, cssFilter } = createFilter()
+        if (cssFilter?.(id)) {
+          console.info(id)
+        }
         if (tsFilter?.(id) || cssFilter?.(id)) {
           return false
         }

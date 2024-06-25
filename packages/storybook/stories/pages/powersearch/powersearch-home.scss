@@ -1,0 +1,39 @@
+:host {
+  --home-page-min-height: 88vh;
+
+  font-family: var(--font-family);
+
+  .bg-image {
+    background: url('') 
+      no-repeat
+      var(--primary-white)
+      top
+      center;
+    width: 100%;
+    position: relative;
+    height: auto;
+    min-height: var(--home-page-min-height);
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 30% auto;
+    column-gap: 20px;
+    min-height: var(--home-page-min-height);
+
+    > div {
+      padding: 30px;
+    }
+
+    .welcome {
+      display: grid;
+      grid-template-rows: 20% auto;
+    }
+  }
+
+  .main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 10px;
+  }
+}

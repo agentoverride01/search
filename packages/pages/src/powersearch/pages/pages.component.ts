@@ -7,7 +7,9 @@ import { PowerSearchPageItemComponent } from './page-item.component'
   standalone: true,
   template: `
     <li-card>
-      <li-header>Pages</li-header>
+      <li-header>
+        <span>Pages</span>
+      </li-header>
       <li-content>
         <header></header>
         <section class="ps-pages-content">

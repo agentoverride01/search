@@ -1,12 +1,21 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core'
+
+import { ResizeButtonComponent } from '@lithium/components/resize'
+import { PowerSearchService } from '../powersearch.service'
 
 @Component({
   selector: 'ps-documents',
   standalone: true,
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  imports: [ ResizeButtonComponent ],
   template: `
     <li-card>
-      <li-header>Documents</li-header>
+      <li-header>
+        <span>Documents</span>
+        <resize-button 
+          [expanded]="expanded" 
+          (onToggle)="onToggle()"></resize-button>
+      </li-header>
       <li-content>
         <header>
           <ul>
@@ -78,4 +87,13 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
   `,
   styleUrl: './documents.component.scss'
 })
-export class PowerSearchDocumentsComponent { }
+export class PowerSearchDocumentsComponent { 
+  #service = inject(PowerSearchService)
+
+  expanded = false
+  
+  onToggle() {
+    this.expanded = !this.expanded
+    this.#service.emit('documents')
+  }
+}

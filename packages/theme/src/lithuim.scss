@@ -4,6 +4,7 @@
   --text-color: #000;
 
   --primary-white: #fff;
+  --primary-bright-blue: #0073cf;
 
   --button-border-radius: var(--border-radius);
   --button-text-color: var(--primary-white);
@@ -41,4 +42,6 @@
   --footer-border-style: solid none none none;
 
   --ps-border-color: #ededed;
+
+  --avatar-border-color: var(--primary-bright-blue);
 }

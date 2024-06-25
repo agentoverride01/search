@@ -16,8 +16,7 @@
     overflow: var(--card-overflow);
     transition: var(--card-transition);
     transform: var(--card-transform);
-    z-index: var(--card-z-index);
-
+    
     &:hover { 
       border: var(--card-border-hover, var(--card-border));
       border-color: var(--card-border-hover-color, var(--card-border-color));

@@ -4,6 +4,8 @@ import './card.scss'
 
 export class CardElement extends CustomElement {
 
+  static $name = 'li-card'
+
   override render() {
     return html `
       <section part="card">
@@ -13,6 +15,6 @@ export class CardElement extends CustomElement {
   }
 }
 
-if (!customElements.get('li-card')) {
-  customElements.define('li-card', CardElement)
+if (!customElements.get(CardElement.$name)) {
+  customElements.define(CardElement.$name, CardElement)
 }

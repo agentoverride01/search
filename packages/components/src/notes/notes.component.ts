@@ -1,11 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core'
-
-export type NotesType =  
-  'success' 
-  | 'info'
-  | 'warning'
-  | 'danger'
-
+import { NotesType } from './types'
 
 @Component({
   selector: 'notes',

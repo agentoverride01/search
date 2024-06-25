@@ -3,13 +3,48 @@
     --card-min-height: var(--ps-people-min-height, 200);
     --card-height: var(
       --ps-people-height, 
-      var(--ps-people-min-height, 200px)
+      var(--ps-people-min-height, auto)
     );
     
     li-header {
       --header-border-style: none;
       --header-align-items: center;
       --header-padding: 10px;
+      --header-height: auto;
+    }
+
+    li-content {
+      --content-padding: 10px;
+
+      .ps-people {
+        &--content {
+          display: var(--ps-people-content-display, grid);
+          grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+          column-gap: 10px;
+
+          > section {
+            display: var(--ps-people-item-display, grid);
+            grid-template-columns: var(--ps-people-item-columns);
+            grid-template-rows: var(--ps-people-item-rows, 1fr 20px);
+            justify-items: var(--ps-people-item-justify-items, center);
+            flex-direction: var(--ps-people-item-flex-direction);
+            gap: var(--ps-people-item-gap);
+            align-items: var(--ps-people-item-align-items);
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            padding: 8px;
+            row-gap: 5px;
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+
+        &--position {
+          display: var(--ps-people-position-display, none);
+        }
+      }
     }
   }
 }

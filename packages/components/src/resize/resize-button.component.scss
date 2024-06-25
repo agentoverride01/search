@@ -1,0 +1,29 @@
+:host {
+  .resize-button {
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    padding: 10px;
+    background-color: rgba(140, 140, 140, 0.1);
+    border-radius: 100%;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: rgba(0, 0, 0, 0.75);;
+    }
+
+    &--expand {
+      display: var(--resize-button-expand, none);
+    }
+
+    &--collapse {
+      display: var(--resize-button-collapse, block);
+    }
+  }
+  
+  .expanded {
+    --resize-button-expand: block;
+    --resize-button-collapse: none;
+  }
+}

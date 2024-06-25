@@ -1,6 +1,3 @@
-import '@lithium/elements/layout'
-import '@lithium/elements/card'
-
 import { Component } from '@angular/core'
 import { PowersearchComponent } from '@lithium/pages/powersearch'
 
