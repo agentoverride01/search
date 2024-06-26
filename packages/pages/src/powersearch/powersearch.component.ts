@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, HostBinding, OnInit, inject } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostBinding, inject } from '@angular/core'
 import { NgClass } from '@angular/common'
 
 import { PowerSearchDocumentsComponent } from './documents/documents.component'
@@ -8,7 +8,12 @@ import { PowerSearchPagesComponent } from './pages/pages.component'
 import { PowerSearchMultimediaComponent } from './multimedia/multimedia.component'
 import { PowersearchResearchReportComponent } from './research-report/research-report.component'
 
-import { PowerSearchService } from './powersearch.service'
+import { 
+  PowersearchSectionEvents, 
+  PowersearchEventService, 
+  PowersearchEvents,
+  PowersearchDataService
+} from './services'
 
 @Component({
   selector: 'gl-powersearch',
@@ -25,14 +30,18 @@ import { PowerSearchService } from './powersearch.service'
     PowersearchResearchReportComponent,
     NgClass
   ],
-  providers: [ PowerSearchService ],
+  providers: [ 
+    PowersearchEventService, 
+    PowersearchDataService,
+    PowersearchSectionEvents 
+  ],
   template: `
     <li-layout>
       <li-header>
         <div>There are 500 items found</div>
         <div>
           <ul>
-            @for (tab of tabs; track tab) {
+            @for (tab of tabs(); track tab) {
               <li 
                 [ngClass]="{
                   'active': active === tab.toLowerCase()
@@ -61,21 +70,10 @@ import { PowerSearchService } from './powersearch.service'
   `,
   styleUrl: './powersearch.component.scss'
 })
-export class PowersearchComponent implements OnInit {  
-  #service = inject(PowerSearchService)
+export class PowersearchComponent extends PowersearchEvents {  
+  #service = inject(PowersearchDataService)
 
-  tabs = [ 'Documents', 'People', 'Pages', 'Deal', 'Multimedia' ]
+  tabs = this.#service.select<string[]>('tabs')
 
-  @HostBinding('attr.active') active!: string
-
-  onZoomInOunt(name: string) {
-    const value = name.toLowerCase()
-    this.active = value === this.active ? '': value
-  }
-
-  ngOnInit() {
-    this.#service.toggle.subscribe({
-      next: this.onZoomInOunt.bind(this)
-    })
-  }
+  @HostBinding('attr.active') override active!: string
 }

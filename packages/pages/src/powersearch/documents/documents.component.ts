@@ -1,7 +1,7 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 import { ResizeButtonComponent } from '@lithium/components/resize'
-import { PowerSearchService } from '../powersearch.service'
+import { PowersearchSectionEvents } from '../services'
 
 @Component({
   selector: 'ps-documents',
@@ -87,13 +87,10 @@ import { PowerSearchService } from '../powersearch.service'
   `,
   styleUrl: './documents.component.scss'
 })
-export class PowerSearchDocumentsComponent { 
-  #service = inject(PowerSearchService)
+export class PowerSearchDocumentsComponent extends PowersearchSectionEvents { 
+  #section = 'documents'
 
-  expanded = false
-  
-  onToggle() {
-    this.expanded = !this.expanded
-    this.#service.emit('documents')
+  override get section() {
+    return this.#section
   }
 }

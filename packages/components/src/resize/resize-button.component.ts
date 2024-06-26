@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@
   selector: 'resize-button',
   standalone: true,
   template: `
-    <button class="resize-button" (click)="onToggle.emit()" #button>
+    <button class="resize-button" (click)="onToggle.emit()" #buttonRef>
       <svg 
         class="resize-button--expand" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -27,10 +27,11 @@ import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@
 })
 export class ResizeButtonComponent  { 
   @Output() onToggle = new EventEmitter()
-  @ViewChild('button') button!: ElementRef<HTMLButtonElement>
+  @ViewChild('buttonRef') button!: ElementRef<HTMLButtonElement>
 
   @Input() set expanded(value: boolean) {
-    const el = this.button.nativeElement
+    const el = this.button?.nativeElement
+    if (!el) return
     value ? el.classList.add('expanded'): el.classList.remove('expanded')
   }
 }
