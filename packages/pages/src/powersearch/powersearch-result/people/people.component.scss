@@ -1,0 +1,25 @@
+:host {
+  .launch-people {
+    display: grid;
+    row-gap: 15px;
+
+    li-content {
+      --content-padding: 0;
+    }
+
+    li-header {
+      --header-border-style: none;
+      --header-height: auto;
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    &--items {
+      grid-template-columns: repeat(4, 180px);
+      column-gap: 20px;
+      row-gap: 20px;
+    }
+  }
+}

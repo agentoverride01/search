@@ -2,11 +2,18 @@
   --search-input-height: 30px;
   font-family: var(--font-family);
 
+  .search-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: var(--search-input-justify-items);
+  }
+
   .search {
     display: grid;
     grid-template-columns: auto 1fr auto;
     column-gap: 10px;
     height: var(--search-input-height);
+    width: var(--search-input-width);
     padding: 5px 10px 12px 20px;
     border: 4px solid var(--search-input-border-color, #D5D5D5);
     border-radius: 100px;

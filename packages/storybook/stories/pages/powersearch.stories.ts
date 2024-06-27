@@ -7,7 +7,7 @@ import { type StoryObj, type Meta } from "@storybook/angular"
 import { defineDefaultArgs } from '@lithium/storybook/utils'
 
 import { SearchInputComponent } from '@lithium/components/search-input'
-import { PowersearchComponent, PowerSearchMyDealComponent } from '@lithium/pages/powersearch'
+import { PowersearchComponent, PowerSearchMyDealComponent, PowersearchResultsComponent } from '@lithium/pages/powersearch'
 
 import { PowerSearchAlert } from './powersearch/powersearch-alert'
 import { PowerSearchNotes } from './powersearch/powersearch-notes'
@@ -32,11 +32,20 @@ export default {
         PowerSearchModal,
         PowerSearchHomePage,
         PowersearchComponent,
-        PowerSearchMyDealComponent
+        PowerSearchMyDealComponent,
+        PowersearchResultsComponent
       ]
     }
   })
 } as Meta
+
+export const GoogleResults: StoryObj = {
+  render: () => ({
+    template: /* html */`
+      <ps-launch-results></ps-launch-results>
+    `
+  })
+}
 
 export const FirstTimeUser: StoryObj = {
   render: () => ({
@@ -101,18 +110,5 @@ export const Notes: StoryObj = {
     template: /* html */`
        <powersearch-notes type=${args.type}></powersearch-notes>
     `
-  })
-}
-
-export const MyDeal: StoryObj = {
-  render: () => ({
-    template: `
-      <ps-mydeal></ps-mydeal>
-    `,
-    styles: [ /* scss */`
-      :host {
-        --card-padding: 20px;
-      }
-    `]
   })
 }
