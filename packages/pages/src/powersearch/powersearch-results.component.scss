@@ -1,5 +1,6 @@
 :host {
   --ps-launch-results-left-space: 200px;
+  --ps-launch-host-section-display: grid;
 
   li-layout {
     --layour-row-gap: 20px;
@@ -47,9 +48,8 @@
     }
 
     li-content {
-
       > section {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 55% 1fr;
 
         section:first-child {
           display: grid;
@@ -62,5 +62,57 @@
         }
       }
     }
+
+    li-footer {
+      --footer-border-style: none;
+    }
+  }
+}
+
+:host([active=documents]) {
+  .ps-results-content > *:not(ps-launch-documents) {
+    --ps-launch-host-section-display: none;    
+  }
+
+  li-layout li-content > section section:first-child > div {
+    row-gap: 20px;   
+  }
+}
+
+:host([active=people]) {
+  .ps-results-content > *:not(ps-launch-people) {
+    --ps-launch-host-section-display: none;    
+  }
+
+  ps-launch-people {
+    --ps-launch-section-footer: none;
+  }
+}
+
+:host([active=pages]) {
+  .ps-results-content > *:not(ps-launch-pages) {
+    --ps-launch-host-section-display: none;    
+  }
+}
+
+:host([active=deal]) {
+  .ps-results-content > *:not(ps-launch-deals) {
+    --ps-launch-host-section-display: none;    
+  }
+}
+
+:host([active=deal]) {
+  .ps-results-content > *:not(ps-launch-deal) {
+    --ps-launch-host-section-display: none;    
+  }
+}
+
+:host([active=multimedia]) {
+  .ps-results-content > *:not(ps-launch-multimedia) {
+    --ps-launch-host-section-display: none;    
+  }
+
+  ps-launch-multimedia {
+    --ps-launch-section-footer: none;
   }
 }

@@ -1,27 +1,83 @@
 :host {
-  section {
+  section, div {
     display: grid;
-    row-gap: 7px;
+  }
 
-    h1, p {
-      padding: 0;
-      margin: 0;
+  .tag {
+    padding: 3px 8px;
+    font-weight: 700;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 13px;
+    min-width: 85px;
+
+    &.template {
+      color: #692c96;
+      background-color: #e4c9ff;
     }
-  
-    div {
-      display: grid;
+
+    &.profile {
+      color: #259e00;
+      background-color: #d4eccc;
+    }
+
+    &.case-study {
+      color: #2d70cd;
+      background-color: #ccebf8;
+    }
+
+    &.market-update {
+      color: #e86d00;
+      background-color: #fceecc;
+    }
+
+    &.learning {
+      color: #9a7611;
+      background-color: #ebe4cf;
+    }
+
+    &.memo-form {
+      color: #006980;
+      background-color: #cce1e6;
+    }
+
+    &.initiative {
+      color: #780032;
+      background-color: #e4ccd6;
+    }
+
+    &.pb-template {
+      color: #012169;
+      background-color: #ccd3e1;
+    }
+
+    &.deal-process {
+      color: #c74e69;
+      background-color: #f4dce1;
+    }
+
+    &.other {
+      color: #7c7c7c;
+      background-color: #eaeaea;
+    }
+  }
+
+  section {
+    row-gap: 5px;
+
+    span {
+      align-self: center;
+    }
+    
+    h1 {
+      font-size: 20px;
+      color: #1a0dab;
+      cursor: pointer;
     }
 
     div:first-child {
       display: flex;
       column-gap: 10px;
-    }
-
-    div:last-child {
-      h1 {
-        font-size: 20px;
-        color: #1a0dab;
-      }
     }
   }
 }

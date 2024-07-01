@@ -1,3 +1,30 @@
 [active=documents] {
   --ps-section-columns: 80% auto;
 }
+
+.ps-launch-section {
+  display: grid;
+  row-gap: 20px;
+
+  li-header {
+    --header-border-style: none;
+    --header-height: auto;
+
+    span {
+      font-size: 24px;
+    }
+  }
+
+  li-content {
+    --content-padding: 0;
+    --content-footer-height: 48px;
+
+    &::part(content){
+      row-gap: 15px;
+    }
+
+    > section {
+      gap: 20px;
+    }
+  }
+}

@@ -1,21 +1,27 @@
-import { Component, inject, CUSTOM_ELEMENTS_SCHEMA, HostBinding, computed } from '@angular/core'
+import { Component, inject, CUSTOM_ELEMENTS_SCHEMA, HostBinding, OnInit, computed } from '@angular/core'
 import { NgClass } from '@angular/common'
 import { SearchInputComponent } from '@lithium/components/search-input'
 
+import { PowersearchLaunchDocuments } from './powersearch-result/documents/documents.component'
+import { PowersearchLaunchPeople } from './powersearch-result/people/people.component'
+import { PowersearchLaunchPages } from './powersearch-result/pages/pages.component'
+import { PowersearchLaunchMultimedia } from './powersearch-result/multimedia/multimedia.component'
+
 import { PowersearchDataService } from './services'
-import { PowersearchLaunchDocument } from './powersearch-result/documents/document.component'
-import { PowersearchLaunchPeopleComponent } from './powersearch-result/people/people.component'
+import { PowersearchLaunchToggleService } from './powersearch-result/toggle-event.service'
 
 @Component({
   selector: 'ps-launch-results',
   standalone: true,
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [ PowersearchDataService ],
+  providers: [ PowersearchDataService, PowersearchLaunchToggleService ],
   imports: [ 
     NgClass,
     SearchInputComponent,
-    PowersearchLaunchDocument,
-    PowersearchLaunchPeopleComponent
+    PowersearchLaunchDocuments,
+    PowersearchLaunchPeople,
+    PowersearchLaunchPages,
+    PowersearchLaunchMultimedia
   ],
   template: `
     <li-layout>
@@ -40,29 +46,23 @@ import { PowersearchLaunchPeopleComponent } from './powersearch-result/people/pe
           <section>
             <div></div>
             <div class="ps-results-content">
-              <div class="ps-results-content--documents">
-                <ps-launch-document></ps-launch-document>
-                <ps-launch-document></ps-launch-document>
-                <ps-launch-document></ps-launch-document>
-              </div>
-              <div class="ps-results-content--people">
-                <ps-launch-people></ps-launch-people>
-              </div>
-              <div class="ps-results-content--documents">
-                <ps-launch-document></ps-launch-document>
-                <ps-launch-document></ps-launch-document>
-                <ps-launch-document></ps-launch-document>
-              </div>
+              <ps-launch-documents [limitTo]="{ to: 3 }" />
+              <ps-launch-people />
+              <ps-launch-documents [limitTo]="{ from: 4 }" />
+              <ps-launch-pages />
+              <ps-launch-multimedia />
             </div>
           </section>
           <section></section>
         </section>
       </li-content>
+      <li-footer></li-footer>
     </li-layout>
   `,
   styleUrl: './powersearch-results.component.scss'
 })
-export class PowersearchResultsComponent {
+export class PowersearchResultsComponent implements OnInit {
+  #toggle = inject(PowersearchLaunchToggleService)
   #service = inject(PowersearchDataService)
 
   @HostBinding('attr.active') active: string = 'all'
@@ -74,5 +74,12 @@ export class PowersearchResultsComponent {
   toggleTab(tab: string) {
     const value = tab.toLowerCase()
     this.active = value === this.active ? '': value
+    this.#toggle.toggle.next(this.active)
+  }
+
+  ngOnInit() {
+    this.#toggle.toggleParent.asObservable().subscribe({
+      next: this.toggleTab.bind(this)
+    })
   }
 }

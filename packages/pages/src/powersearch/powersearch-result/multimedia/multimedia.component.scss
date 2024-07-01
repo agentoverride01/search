@@ -1,0 +1,23 @@
+:host {
+  display: var(--ps-launch-host-section-display);
+}
+
+.ps-launch-section {
+  &--items {
+    grid-template-columns: repeat(4, 200px);
+    
+    &.active {
+      ps-launch-multimedia-item:nth-child(n+5) {
+        --ps-launch-multimedia-item-display: grid;
+      }
+    }
+    
+    ps-launch-multimedia-item:nth-child(n+5) {
+      --ps-launch-multimedia-item-display: none;
+    }
+  }
+
+  li-content footer {
+    display: var(--ps-launch-section-footer);
+  }
+}

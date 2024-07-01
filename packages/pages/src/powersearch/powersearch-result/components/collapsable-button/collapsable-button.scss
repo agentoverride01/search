@@ -1,0 +1,28 @@
+:host {
+  section {
+    display: grid;
+    grid-template-columns: 30% 1fr 30%;
+
+    button, hr {
+      align-self: center;
+    }
+
+    hr {
+      height: 1px;
+      border: none;
+      background-color: #ccc;
+      width: 100%;
+    }
+
+    button {
+      border-radius: 40px;
+      height: 36px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #d8d7dc;
+      }
+    }
+  }
+}

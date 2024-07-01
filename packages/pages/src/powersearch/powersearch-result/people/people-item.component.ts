@@ -1,4 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
+import { Person } from './types'
 
 @Component({
   selector: 'ps-launch-people-item',
@@ -6,21 +7,19 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   template: `
     <section class="people-item">
-      <li-avatar 
-        src="https://2019.ng-my.org/assets/imgs/speakers/arjay-elbore.webp" 
-        alt="1"></li-avatar>
-        <div>
-          <span>Arjay Elbore</span>
-          <span class="people-item--position">
-            Software Developer
-          </span>
-        </div>
+      <li-avatar [src]="value.avatar?.src" />
+      <div>
+        <span>{{value.name}}</span>
+        <span class="people-item--position">
+          {{value.position}}
+        </span>
+      </div>
     </section>
   `,
   styles: /* scss */`
     :host {
       .people-item {
-        display: grid;
+        display: var(--ps-people-item-display, grid);
         border: 1px solid #cccccc;
         border-radius: 8px;
         padding: 8px;
@@ -46,5 +45,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
   `
 })
 export class PowersearchLauncPeopleItem {
-
+  
+  @Input() value!: Person
 }

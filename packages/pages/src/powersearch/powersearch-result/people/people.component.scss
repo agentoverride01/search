@@ -1,25 +1,23 @@
 :host {
-  .launch-people {
-    display: grid;
-    row-gap: 15px;
+  display: var(--ps-launch-host-section-display);
+}
 
-    li-content {
-      --content-padding: 0;
-    }
-
-    li-header {
-      --header-border-style: none;
-      --header-height: auto;
-
-      span {
-        font-size: 24px;
+.ps-launch-section {
+  &--items {
+    grid-template-columns: repeat(4, 180px);
+    
+    &.active {
+      ps-launch-people-item:nth-child(n+5) {
+        --ps-people-item-display: grid;
       }
     }
-
-    &--items {
-      grid-template-columns: repeat(4, 180px);
-      column-gap: 20px;
-      row-gap: 20px;
+    
+    ps-launch-people-item:nth-child(n+5) {
+      --ps-people-item-display: none;
     }
+  }
+
+  li-content footer {
+    display: var(--ps-launch-section-footer);
   }
 }

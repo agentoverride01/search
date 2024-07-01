@@ -1,0 +1,44 @@
+:host {
+  section, div {
+    display: grid;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    font-weight: 700;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 12px;
+
+    &.levfin,
+    &.ecm,
+    &.m-a {
+      color: #2d70cd;
+      background-color: #ccebf8;
+    }
+
+    &.quick-link,
+    &.cx {
+      color: #7c7c7c;
+      background-color: #eaeaea;
+    }
+  }
+
+  section {
+    row-gap: 5px;
+
+    div {
+      display: flex;
+      column-gap: 10px;
+
+      h1 {
+        font-size: 20px;
+        color: #1a0dab;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
