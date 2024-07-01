@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { NgClass } from '@angular/common'
 
+import { Pagination } from '@lithium/components/pagination'
+
 import { PowersearchLauncPeopleItem } from './people-item.component'
 import { PowersearchLauncPeopleService } from './people-data.service'
 
@@ -13,7 +15,7 @@ import { Person } from './types'
   selector: 'ps-launch-people',
   standalone: true,
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  imports: [ NgClass, PowersearchLauncPeopleItem, CollapsableButton ],
+  imports: [ Pagination, NgClass, PowersearchLauncPeopleItem, CollapsableButton ],
   providers: [ PowersearchLauncPeopleService ],
   template: `
     <section class="ps-launch-section">
@@ -32,6 +34,9 @@ import { Person } from './types'
           </ps-collapsable-button>
         </footer>
       </li-content>
+      <li-footer>
+        <pagination></pagination>
+      </li-footer>
     </section>
   `,
   styleUrl: './people.component.scss'

@@ -86,6 +86,12 @@
 
   ps-launch-people {
     --ps-launch-section-footer: none;
+
+    ::ng-deep .ps-launch-section {
+      li-footer {
+        --footer-display: grid;
+      }
+    }
   }
 }
 

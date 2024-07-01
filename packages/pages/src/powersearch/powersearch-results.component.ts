@@ -1,6 +1,8 @@
 import { Component, inject, CUSTOM_ELEMENTS_SCHEMA, HostBinding, OnInit, computed } from '@angular/core'
 import { NgClass } from '@angular/common'
+
 import { SearchInputComponent } from '@lithium/components/search-input'
+import { Pagination } from '@lithium/components/pagination'
 
 import { PowersearchLaunchDocuments } from './powersearch-result/documents/documents.component'
 import { PowersearchLaunchPeople } from './powersearch-result/people/people.component'
@@ -21,7 +23,8 @@ import { PowersearchLaunchToggleService } from './powersearch-result/toggle-even
     PowersearchLaunchDocuments,
     PowersearchLaunchPeople,
     PowersearchLaunchPages,
-    PowersearchLaunchMultimedia
+    PowersearchLaunchMultimedia,
+    Pagination
   ],
   template: `
     <li-layout>
@@ -56,7 +59,9 @@ import { PowersearchLaunchToggleService } from './powersearch-result/toggle-even
           <section></section>
         </section>
       </li-content>
-      <li-footer></li-footer>
+      <li-footer>
+        
+      </li-footer>
     </li-layout>
   `,
   styleUrl: './powersearch-results.component.scss'

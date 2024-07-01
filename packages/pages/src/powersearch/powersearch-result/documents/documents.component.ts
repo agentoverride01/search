@@ -1,4 +1,6 @@
-import { Component, inject, input } from '@angular/core'
+import { Component, inject, input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+
+import { Pagination } from '@lithium/components/pagination'
 
 import { PowersearchLaunchDocument } from './document.component'
 import { PowersearchLaunchDocumentsService } from './documents-data.service'
@@ -9,13 +11,18 @@ import {  DocumentItem, LimitConfig } from './types'
 @Component({
   selector: 'ps-launch-documents',
   standalone: true,
-  imports: [ PowersearchLaunchDocument, DocumentsLimitToPipe ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  imports: [ Pagination, PowersearchLaunchDocument, DocumentsLimitToPipe ],
   providers: [ PowersearchLaunchDocumentsService ],
   template: `
     <section class="ps-launch-section">
-      @for (doc of documents() | limiTo: limitTo(); track doc.id) {
-        <ps-launch-document [value]="doc" />
-      }
+      <li-content>
+        <section>
+          @for (doc of documents() | limiTo: limitTo(); track doc.id) {
+            <ps-launch-document [value]="doc" />
+          }
+        </section>
+      </li-content>
     </section>
   `,
   styles: /* scss */`
